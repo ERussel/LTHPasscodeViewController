@@ -851,7 +851,15 @@ options:NSNumericSearch] != NSOrderedAscending)
 		// Also, in case the control doesn't work properly,
 		// try it with .keyWindow before anything else, it might work.
 //		UIWindow *mainWindow = [UIApplication sharedApplication].keyWindow;
-		UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
+        UIWindow *mainWindow = nil;
+        
+        // determine window to present on
+        if ([self.delegate respondsToSelector:@selector(presentationWindow)]) {
+            mainWindow = [self.delegate presentationWindow];
+        }else{
+            mainWindow = [UIApplication sharedApplication].windows[0];
+        }
+        
 		[mainWindow addSubview: self.view];
 //		[mainWindow.rootViewController addChildViewController: self];
 		// All this hassle because a view added to UIWindow does not rotate automatically

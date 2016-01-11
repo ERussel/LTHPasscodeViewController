@@ -23,6 +23,11 @@
  */
 - (void)passcodeWasEnteredSuccessfully;
 /**
+ @brief Provide any custom window to display lock controller on.
+ @return UIWindow to present lock controller.
+ */
+-(UIWindow*)presentationWindow;
+/**
  @brief Called when the logout button was pressed.
  */
 - (void)logoutButtonWasPressed;
